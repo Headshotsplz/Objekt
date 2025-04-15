@@ -50,10 +50,12 @@ public class Department {
         employees.add(employee);
     }
 
-    public void removeEmployee(Employee employee) {
+    protected void removeEmployee(Employee employee) {
         if (!employees.contains(employee)) {
             throw new IllegalArgumentException("Er ikke ansatt.");
         }
+        employee.quit();
+
         employees.remove(employee);
     }
 

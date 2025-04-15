@@ -22,7 +22,7 @@ public class Employee {
 
         // Oppdaterer slik nåværende department, altså tilstand er parent, altså nye
         // department.
-        this.department = this.department.getParent(); // this.department = salg.
+        this.department = this.department.getParent(); //this.department = salg.
 
         // Legger til ansatt i ny ansatt liste.
         this.department.addEmployee(this);
@@ -43,6 +43,5 @@ public class Employee {
 
         salg.removeEmployee(markus);
 
-        
     }
 }
