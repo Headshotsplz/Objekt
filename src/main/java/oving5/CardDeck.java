@@ -2,11 +2,13 @@ package oving5;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class CardDeck implements CardContainer {
+public class CardDeck{
 
-    private int face;
     private final String suits = "SHDC";
+    private int face;
     private List<Card> cards = new ArrayList<>();
 
     public CardDeck(int n){
@@ -20,6 +22,30 @@ public class CardDeck implements CardContainer {
             }
         }
     }
+
+    public boolean hasCard(Predicate<Card> predicate){
+        if (predicate == null) {
+            throw new IllegalArgumentException("");
+        }
+        return cards.stream().anyMatch(predicate);
+    }
+    
+    public int getCardCount(Predicate<Card> predicate){
+        if (predicate == null) {
+            throw new IllegalArgumentException("");
+        }
+        return (int) cards.stream().filter(predicate).count();
+
+        
+        
+    }
+    public List<Card> getCards(Predicate<Card> predicate){
+        if (predicate == null) {
+            throw new IllegalArgumentException("");
+        }
+        return cards.stream().filter(predicate).collect(Collectors.toList());
+    }
+
 
     public int getCardCount() {
         return cards.size();
@@ -35,7 +61,6 @@ public class CardDeck implements CardContainer {
             hand.addCard(card);
         } 
     }
-    
 
     public Card getCard(int n) {
         if (n < 0 || n > cards.size()) {
@@ -65,14 +90,4 @@ public class CardDeck implements CardContainer {
         cards = shuffled;
     }
 
-    
-
-    public static void main(String[] args) {
-        CardDeck deck1 = new CardDeck(4);
-
-        System.out.println(deck1.getCardCount());
-
-        deck1.shufflePerfectly();
-        System.out.println(deck1.getCard(5));
-    }
 }

@@ -7,7 +7,7 @@ public class BankAccount {
 
     public static void main(String[] args) {
         BankAccount a = new BankAccount("Mia", 1000);
-        BankAccount b = new BankAccount("Mia", 1000);
+        BankAccount b = new BankAccount("Markus", 1000);
 
         System.out.println(a.getBalance());
         System.out.println(b.getBalance());
@@ -17,6 +17,11 @@ public class BankAccount {
         
         b.deposit(500);
         System.out.println(b.getBalance());
+
+        b.transferTo(a, 1000);
+        System.out.println(a.getBalance());
+        System.out.println(b.getBalance());
+
 
     }
 

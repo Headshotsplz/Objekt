@@ -4,25 +4,27 @@ import java.util.Iterator;
 
 public class CardContainerIterator implements Iterator<Card> {
 
-    private CardContainer container;
+    private CardContainer cardcontainer;
 
     private int pos = 0;
 
-    public CardContainerIterator(){
+    public CardContainerIterator(CardContainer cardcontainer){
+        this.cardcontainer = cardcontainer;
 
     }
 
     @Override
     public boolean hasNext() {
-        return pos < this.container.getCardCount();
-    }
+        if (pos < cardcontainer.getCardCount()) {
+            return true;
+        }
+        return false;
+        }
 
     @Override
     public Card next() {
-
-        Card card = this.container.getCard(this.pos);
-        this.pos++;
-        return card;
+        //Vi henter metode getcard fra cardcontainer klasse og henter ett og ett kort, 
+        //økter pos med 1 for å hente alle indeksene.
+        return cardcontainer.getCard(pos++);
     }
-    
 }
