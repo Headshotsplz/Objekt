@@ -1,9 +1,9 @@
-package oving4;
+package oving5.twitter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TwitterAccount {
+public class TwitterAccount{
 
     private final List<TwitterAccount> followers = new ArrayList<>();
     private final List<TwitterAccount> follows = new ArrayList<>();
@@ -70,5 +70,4 @@ public class TwitterAccount {
     public int getRetweetCount(){
         return tweets.stream().mapToInt(t -> t.getRetweetCount()).sum();
     }
-
 }
