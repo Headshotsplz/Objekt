@@ -1,73 +1,56 @@
 package kladd;
 
 public class BankAccount {
-    
     private String owner;
     private double balance;
+    private boolean isLocked;
 
-    public static void main(String[] args) {
-        BankAccount a = new BankAccount("Mia", 1000);
-        BankAccount b = new BankAccount("Markus", 1000);
-
-        System.out.println(a.getBalance());
-        System.out.println(b.getBalance());
-
-        a.withdraw(200);
-        System.out.println(a.getBalance());
-        
-        b.deposit(500);
-        System.out.println(b.getBalance());
-
-        b.transferTo(a, 1000);
-        System.out.println(a.getBalance());
-        System.out.println(b.getBalance());
-
-
-    }
-
-    
-
-    public BankAccount(String owner, double balance) {
-        if (owner == null) {
-            throw new IllegalArgumentException("");
-        }
-        if (balance < 0) {
-            throw new IllegalArgumentException("");
-        }
+    public BankAccount(){
         this.owner = owner;
-        this.balance = balance;
+        this.balance = 0;
+        this.isLocked = false;
     }
 
-    public double getBalance() {
-        return balance;
-    }
-
-
-
-    public void deposit(double amount){
+    public void validateBalance(double amount){
         if (amount <= 0) {
             throw new IllegalArgumentException("");
         }
+        if (isLocked == false){
+            throw new IllegalArgumentException("");
+        }
+    }
+    
+    public void deposit(double amount){
+        validateBalance(amount);
         balance += amount;
     }
+
     public void withdraw(double amount){
-        if (amount <= 0) {
+        if (amount > balance) {
             throw new IllegalArgumentException("");
         }
-        if (amount > balance) {
+        if (isLocked == false) {
             throw new IllegalArgumentException("");
         }
         balance -= amount;
     }
 
-    public void transferTo(BankAccount other, double amount){
-        if (amount <= 0) {
-            throw new IllegalArgumentException("");
-        }
-        if (amount > this.balance) {
-            throw new IllegalArgumentException("");
-        }
-        this.withdraw(amount);
-        other.deposit(amount);
+    public void lock(){
+
+        this.isLocked = true;
     }
+
+    public void unlock(){
+        this.isLocked = false;
+    }
+
+    public double getBalance() {
+        if (isLocked = false) {
+            throw new IllegalStateException("");
+        }
+        return balance;
+    }
+    
+
+    
 }

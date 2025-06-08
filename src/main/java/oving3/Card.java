@@ -5,9 +5,6 @@ package oving3;
  * objects cannot be modified after they are created. A {@code Card} object has a suit and a face.
  */
 public class Card {
-    
-    private char suit;
-    private int face;
 
     /**
      * The constructor of the {@code Card} class initializes the suit and face of the card with the
@@ -22,25 +19,12 @@ public class Card {
      * @see {@link CardTest#testConstructor}
      */
 
-    public Card(char suit, int face) {
-        if (suit != 'S' && suit != 'H' && suit != 'D' && suit != 'C') {
-            throw new IllegalArgumentException("Illegal suit");
-        }
-    
-        if (face < 1 || face > 13) {
-            throw new IllegalArgumentException("Invalid face");
-        }
-    
-        this.suit = suit;
-        this.face = face;
-    }
 
     /**
      * @return the suit of the card
      */
     public char getSuit() {
         // TODO: implement this method
-        return suit;
     }
 
     /**
@@ -48,7 +32,6 @@ public class Card {
      */
     public int getFace() {
         // TODO: implement this method
-        return face;
     }
 
     /**
@@ -60,12 +43,6 @@ public class Card {
     @Override
     public String toString() {
         // TODO: implement this method
-        return String.format("%c%d",suit, face);
-    }
-
-    public static void main(String[] args) {
-        Card card = new Card('S', 1);
-        Card card1 = new Card('S', 0);
-        System.out.println(card1);
+        return String.format("face: %s, suit: %d");
     }
 }
