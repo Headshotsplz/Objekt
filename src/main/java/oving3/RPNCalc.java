@@ -31,8 +31,33 @@ public class RPNCalc {
         if (index > stack.size() - 1) {
             return Double.NaN;
         }
-        return 
+        if (index < 0) {
+            throw new IllegalArgumentException("index cannot be negative");
+        }
 
+        return stack.get(stack.size() - 1 - index);
+    }
+
+    public void performOperation(char op){
+        double a = pop();
+        double b = pop();
+        
+        if (stack.size() < 2) {
+            push(Double.NaN);
+        }
+        if (op == '+' ) {
+            push(overst + nestOverst);
+        }
+        if (op == '-') {
+            pop(overst - nestOverst);
+        }
+        if (op == '*') {
+            push(overst * nestOverst);
+        }
+
+        if (op == '/') {
+            pop(overst / nestOverst);
+        }
     }
     
 }

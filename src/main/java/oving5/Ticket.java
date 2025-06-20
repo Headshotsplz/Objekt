@@ -1,8 +1,6 @@
 package oving5;
 
-public interface Ticket {
-
-    public boolean scan();
-
+public interface Ticket  {
     
+    boolean scan();
 }

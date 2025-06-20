@@ -1,9 +1,11 @@
 package oving5;
 
+import oving3.Card;
+
 public interface CardContainer {
 
-    public int getCardCount();
+    int getCardCount();
 
-    public Card getCard(int n);
-
+    Card getCard(int n);
+    
 }

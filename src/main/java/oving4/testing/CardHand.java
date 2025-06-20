@@ -1,10 +1,9 @@
+package oving4.testing;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import oving3.Card;
-import oving5.CardContainer;
-
-public class CardHand implements CardContainer{
+public class CardHand {
     
     private List<Card> cards = new ArrayList<>();
 
@@ -18,12 +17,10 @@ public class CardHand implements CardContainer{
         return card;
     }
     
-    @Override
     public int getCardCount(){
         return cards.size();
     }
 
-    @Override
     public Card getCard(int n){
         return cards.get(n);
     }

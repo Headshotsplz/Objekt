@@ -1,33 +1,26 @@
+package oving4.testing;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import oving3.Card;
-import oving5.CardContainer;
+public class CardDeck {
 
-public class CardDeck implements CardContainer {
+    private List<Card> cards = new ArrayList<>();
+    private int face;
+    private static final String suits = "SHDC";
 
-    private final List<Card> cards = new ArrayList<>();
-    private static final String SUITS = "SHDC";
 
     public CardDeck(int n){
-        for (char suit : SUITS.toCharArray()) {
+        for (char suit : suits.toCharArray()) {
             for (int face = 1; face <= n; face++){
-                cards.add(new Card(String.valueOf(suit), face));
+                cards.add(new Card(suit, face));
             }
         }
     }
-
-    public CardDeck() {
-    }
-
-
-
-    @Override
     public int getCardCount(){
         return cards.size();
     }
     
-    @Override
     public Card getCard(int n){
         return cards.get(n);
     }

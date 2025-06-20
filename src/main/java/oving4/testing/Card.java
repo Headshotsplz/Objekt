@@ -1,5 +1,6 @@
+package oving4.testing;
 
-public class Card implements Comparable {
+public class Card {
     private final String suit;
     private final int face;
 
@@ -26,4 +27,11 @@ public class Card implements Comparable {
     public String toString() {
         return "Card [suit=" + suit + ", face=" + face + "]";
     }
+
+    
+
+
+
+
+    
 }

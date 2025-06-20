@@ -21,15 +21,15 @@ public class Card {
      * 
      * @see {@link CardTest#testConstructor}
      */
-    public Card(char suit, int face) {
-        if (suit != 'S' && suit != 'H' && suit != 'D' && suit != 'C') {
+    public Card(String suit, int face) {
+        if (string != 'S' && suit != 'H' && string != 'D' && suit != 'C') {
             throw new IllegalArgumentException("illegal suit");
         }
         if (face <= 0 || face > 13) {
             throw new IllegalArgumentException("illegal face");
         }
         this.face = face;
-        this.suit = suit;
+        this.suit = string;
     }
 
     /**
