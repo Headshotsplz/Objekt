@@ -1,5 +1,8 @@
 package oving7.train;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * The class {@code Train} represents a train that consists of one or more train cars.
  * 
@@ -9,8 +12,11 @@ package oving7.train;
  */
 public class Train {
 
-    // TODO: Add fields here
+    private TrainCar trainCar;
+    private CargoCar cargoCar;
+    private PassengerCar passengerCar;
 
+    private List<TrainCar> trainCars = new ArrayList<>();
     /**
      * @param trainCar the train car to check for
      * @return {@code true} if the train contains the train car, {@code false} otherwise
@@ -18,8 +24,7 @@ public class Train {
      * @see TrainTest#testAddCarToTrain()
      */
     public boolean contains(TrainCar trainCar) {
-        // TODO: Implement this method
-        return false;
+        return trainCars.contains(trainCar);
     }
 
     /**
@@ -31,7 +36,10 @@ public class Train {
      * @see TrainTest#testAddCarToTrain()
      */
     public void addTrainCar(TrainCar trainCar) {
-        // TODO: Implement this method
+        if (this.trainCar == null) {
+            throw new IllegalArgumentException("Traincar cannot be zero");
+        }
+        trainCars.add(trainCar);
     }
 
     /**
@@ -41,8 +49,7 @@ public class Train {
      * @see TrainTest#testTotalTrainWeight()
      */
     public int getTotalWeight() {
-        // TODO: Implement this method
-        return 0;
+        return trainCar.getDeadWeight() + (getPassengerCount()*80) + getCargoWeight();
     }
 
     /**
@@ -51,8 +58,7 @@ public class Train {
      * @see TrainTest#testPassengerCount()
      */
     public int getPassengerCount() {
-        // TODO: Implement this method
-        return 0;
+        return passengerCar.getPassengerCount();
     }
 
     /**
@@ -62,7 +68,7 @@ public class Train {
      */
     public int getCargoWeight() {
         // TODO: Implement this method
-        return 0;
+        return cargoCar.getCargoWeight();
     }
 
     /**

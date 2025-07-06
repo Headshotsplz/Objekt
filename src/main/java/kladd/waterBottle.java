@@ -1,5 +1,0 @@
-package kladd;
-
-public class {
-    
-}

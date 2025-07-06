@@ -1,33 +1,34 @@
+
 package kladd;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Person {
-    private int age;
     private String name;
+    private List<Dog> dogs;
 
-    public Person(String name, int age){
+    public Person(String name) {
         this.name = name;
-        this.age = age;
+        this.dogs = new ArrayList<>();
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int setAge(int newAge){
-        if (newAge < 0) {
-            throw new IllegalArgumentException("Cannot have negative age");
+    public void addDog(Dog dog) {
+        if (dogs.contains(dog)) {
+            throw new IllegalArgumentException("already own dog");
+            
         }
-        return newAge;
+        dogs.add(dog);
     }
 
-    public static void main(String[] args) {
-        Person p = new Person("Markus", 26);
+    public void removeDog(Dog dog) {
+        if (! dogs.contains(dog)) {
+            throw new IllegalArgumentException("dog already removed");
+        }
+        dogs.remove(dog);
+    }
 
-        System.out.println(p.getName());
-        p.setAge(-5);
+    public List<Dog> getDogs() {
+        return new ArrayList<>(dogs); // returnerer kopi for sikkerhet
     }
 }

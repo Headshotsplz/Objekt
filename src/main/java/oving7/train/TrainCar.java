@@ -7,6 +7,8 @@ public class TrainCar {
 
     // TODO: Add fields here
 
+    private int deadWeight;
+
     /**
      * Constructor for a train car.
      * 
@@ -16,7 +18,14 @@ public class TrainCar {
      * @see TrainCarTest#testDeadWeight()
      */
     public TrainCar(int deadWeight) {
-        // TODO: Implement this constructor
+        validateWeight(deadWeight);
+        this.deadWeight = deadWeight;
+    }
+
+    public void validateWeight(int deadWeight){
+        if (deadWeight < 0) {
+            throw new IllegalArgumentException("deadWeight cannot be negative");
+        }
     }
 
     /**
@@ -27,7 +36,8 @@ public class TrainCar {
      * @see TrainCarTest#testDeadWeight()
      */
     public void setDeadWeight(int deadWeight) {
-        // TODO: Implement this method
+        validateWeight(deadWeight);
+        this.deadWeight = deadWeight;
     }
 
     /**
@@ -37,8 +47,7 @@ public class TrainCar {
      * @see TrainCarTest#testDeadWeight()
      */
     public int getDeadWeight() {
-        // TODO: Implement this method
-        return 0;
+        return this.deadWeight;
     }
 
     /**
@@ -49,8 +58,7 @@ public class TrainCar {
      * @see TrainCarTest#testDeadWeight()
      */
     public int getTotalWeight() {
-        // TODO: Implement this method
-        return 0;
+        return deadWeight;
     }
 
     /**
@@ -59,10 +67,10 @@ public class TrainCar {
      *         of passengers should also be included. For {@link CargoCar}, the weight of the cargo
      *         should also be included.
      */
+
     @Override
     public String toString() {
-        // TODO: Implement this method
-        return null;
+        return "TrainCar [deadWeight=" + deadWeight + "]";
     }
 
     public static void main(String[] args) {

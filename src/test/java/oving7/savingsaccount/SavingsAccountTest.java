@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 public class SavingsAccountTest {
 
 	private static double epsilon = 0.001;
-	private SavingsAccount savingsAccount;
+	private Account savingsAccount;
 
 	@BeforeEach
 	public void setUp() {

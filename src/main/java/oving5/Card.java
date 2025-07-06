@@ -1,11 +1,15 @@
 
-public class Card implements Comparable {
-    private final String suit;
+package oving5;
+
+public class Card implements Comparable<Card> {
+
+    private final char suit;
     private final int face;
+    private static final String SUITS = "SHDC";
 
     
-    public Card(String suit, int face) {
-        if (suit != "S" && suit != "H" && suit != "D" && suit != "C") {
+    public Card(char suit, int face) {
+        if (suit != 'S' && suit != 'H' && suit != 'D' && suit != 'C') {
             throw new IllegalArgumentException("invalid suit");
         }
         if (face < 1 || face > 13) {
@@ -15,15 +19,16 @@ public class Card implements Comparable {
         this.face = face;
     }
 
-    public String getSuit() {
-        return suit;
+    public char getSuit() {
+        return this.suit;
     }
     public int getFace() {
-        return face;
+        return this.face;
     }
 
     @Override
-    public String toString() {
-        return "Card [suit=" + suit + ", face=" + face + "]";
-    }
+    public int compareTo(Card otherCard) {
+        String suitOrder = "CDHS";
+
+        
 }

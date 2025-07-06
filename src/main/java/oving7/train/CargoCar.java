@@ -11,6 +11,8 @@ public class CargoCar extends TrainCar {
 
     // TODO: Add fields here
 
+    private int deadWeight;
+    private int cargoWeight;
     /**
      * Constructor for the cargo car.
      * 
@@ -21,8 +23,11 @@ public class CargoCar extends TrainCar {
      * @see CargoCarTest#testWeight()
      */
     public CargoCar(int deadWeight, int cargoWeight) {
-        // TODO: Implement this constructor
         super(deadWeight);
+        if (deadWeight < 0 || cargoWeight < 0) {
+            throw new IllegalArgumentException("either deadWeight or cargoWeight cannot be negative");
+        }
+        this.cargoWeight = cargoWeight;
     }
 
     /**
@@ -31,8 +36,7 @@ public class CargoCar extends TrainCar {
      * @see CargoCarTest#testWeight()
      */
     public int getCargoWeight() {
-        // TODO: Implement this method
-        return 0;
+        return this.cargoWeight;
     }
 
     /**
@@ -42,19 +46,22 @@ public class CargoCar extends TrainCar {
      * @see CargoCarTest#testWeight()
      */
     public void setCargoWeight(int cargoWeight) {
-        // TODO: Implement this method
+        if (cargoWeight < 0) {
+            throw new IllegalArgumentException("cargoWeight cannot be zero");
+        }
+        this.cargoWeight = cargoWeight;
     }
 
     @Override
     public int getTotalWeight() {
-        // TODO: Implement this method
-        return 0;
+        return super.getDeadWeight() + cargoWeight;
     }
+
+    
 
     @Override
     public String toString() {
-        // TODO: Implement this method
-        return null;
+        return "CargoCar [deadWeight=" + deadWeight + ", cargoWeight=" + cargoWeight + "]" + "TotalWeight: " + getCargoWeight();
     }
 
     public static void main(String[] args) {
